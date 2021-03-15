@@ -9,6 +9,18 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
+    id 'java'
+    id 'eclipse'
+}
+
+eclipse {
+    project {
+        name = "mypServerApp"
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8' // javac -encodin UTF-8
 }
 
 repositories {
@@ -19,12 +31,12 @@ repositories {
 dependencies {
     // Use JUnit test framework.
     testImplementation 'junit:junit:4.13'
-
+    implementation 'com.google.code.gson:gson:2.8.6'
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:29.0-jre'
 }
 
 application {
     // Define the main class for the application.
-    mainClass = 'com.myp.pms.App'
+    mainClass = 'com.myp.pms.ServerApp'
 }
